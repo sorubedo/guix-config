@@ -81,6 +81,14 @@
              "7677db76330121a901604dfbad19077893865f35"
              (openpgp-fingerprint
               "13E7 6CD6 E649 C28C 3385  4DF5 5E5A A665 6149 17F7"))))
+         (channel
+           (name 'pantherx)
+           (url "https://codeberg.org/gofranz/panther.git")
+           (introduction
+            (make-channel-introduction
+             "54b4056ac571611892c743b65f4c47dc298c49da"
+             (openpgp-fingerprint
+              "A36A D41E ECC7 A871 1003  5D24 524F EB1A 9D33 C9CB"))))
          %default-channels))
 
 ;;; ---------------------------------------------------------------------------
@@ -92,6 +100,11 @@
   (plain-file "nonguix.pub"
    "(public-key (ecc (curve Ed25519)
  (q #C1FD53E5D4CE971933EC50C9F307AE2171A2D3B52C804642A7A35F84F3A4EA98#)))"))
+
+(define pantherx-signing-key
+  (plain-file "pantherx.pub"
+   "(public-key (ecc (curve Ed25519)
+ (q #0096373009D945F86C75DFE96FC2D21E2F82BA8264CB69180AA4F9D3C45BAA47#)))"))
 
 (define sorubedo-ssh-public-key
   (plain-file "sorubedo.pub"
@@ -462,9 +475,11 @@
               ;; 二进制替代服务器。
               (simple-service 'substitute-servers guix-service-type
                               (guix-extension (substitute-urls (list
-                                                                "https://substitutes.nonguix.org"))
+                                                                "https://substitutes.nonguix.org"
+                                                                "https://substitutes.guix.gofranz.com"))
                                               (authorized-keys (list
-                                                                nonguix-signing-key)))))
+                                                                nonguix-signing-key
+                                                                pantherx-signing-key)))))
 
              mingetty-services
 

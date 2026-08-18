@@ -36,6 +36,7 @@
              (gnu packages fontutils)
              (gnu packages ibus)
              (sorubedo packages input-methods)
+             (sorubedo packages vnc)
              (abbe packages rust)
              (gnu packages vulkan)
              (gnu packages graphics))
@@ -102,7 +103,8 @@
                                 fcitx5-configtool
                                 fcitx5-qt
                                 fcitx5-rime-with-plugins
-                                fontmanager))
+                                fontmanager
+                                wayvnc))
 
                 ;;; 家庭服务
                 ;; 按环境、桌面和终端功能分组。
