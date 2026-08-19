@@ -33,6 +33,7 @@
              (nongnu packages video)
              (shika packages wl-clip-persist)
              (shika packages lazygit)
+             (shika packages admin)
              (gnu packages fontutils)
              (gnu packages ibus)
              (sorubedo packages input-methods)
@@ -63,7 +64,7 @@
                                 git
                                 github-cli
                                 lazygit
-                                fastfetch
+                                fastfetch-no-zfs
                                 starship
                                 foot
                                 ungoogled-chromium/wayland
