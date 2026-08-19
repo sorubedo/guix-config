@@ -38,6 +38,7 @@
              (gnu packages ibus)
              (sorubedo packages input-methods)
              (sorubedo packages vnc)
+             (sorubedo packages tools)
              (abbe packages rust)
              (gnu packages vulkan)
              (gnu packages graphics))
@@ -66,6 +67,7 @@
                                 lazygit
                                 fastfetch-no-zfs
                                 starship
+                                direnv
                                 foot
                                 ungoogled-chromium/wayland
                                 niri
@@ -105,7 +107,8 @@
                                 fcitx5-qt
                                 fcitx5-rime-with-plugins
                                 fontmanager
-                                wayvnc))
+                                wayvnc
+                                steamguard-cli))
 
                 ;;; 家庭服务
                 ;; 按环境、桌面和终端功能分组。
@@ -159,6 +162,7 @@ end
 if status is-interactive
     starship init fish | source
     fzf --fish | source
+    direnv hook fish | source
 end
 "))))))
                          %base-home-services)))

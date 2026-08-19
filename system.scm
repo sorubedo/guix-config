@@ -5,6 +5,7 @@
              (gnu services desktop)
              (gnu services dns)
              (gnu services docker)
+             (shika packages docker)
              (gnu services linux)
              (gnu services networking)
              (gnu services pm)
@@ -359,6 +360,7 @@
                             curl
                             brightnessctl
                             ddcutil
+                            podman-compose
                             font-terminus
                             fontconfig
                             font-google-noto-sans-cjk
@@ -462,6 +464,7 @@
               (service containerd-service-type)
               (service docker-service-type
                        (docker-configuration
+                        (docker-cli docker-full)
                         (config-file docker-daemon-config)))
               (service iptables-service-type)
               (service rootless-podman-service-type
