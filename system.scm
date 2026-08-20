@@ -26,71 +26,12 @@
              (gnu packages containers)
              (gnu packages shells)
              (abbe packages fonts)
-             (guix channels)
              (guix gexp)
              (nongnu packages linux)
              (nongnu packages nvidia)
              (nonguix)
              (nonguix transformations)
              (sorubedo services virtualization))
-
-;;; ---------------------------------------------------------------------------
-;;; Guix 频道
-;;; ---------------------------------------------------------------------------
-
-(define system-channels
-  (cons* (channel
-           (name 'sorubedo)
-           (url "https://github.com/sorubedo/guix-channel")
-           (branch "main"))
-         (channel
-           (name 'noctalia)
-           (url "https://github.com/noctalia-dev/noctalia")
-           (branch "main"))
-         (channel
-           (name 'abbe)
-           (url "https://codeberg.org/group/guix-modules")
-           (branch "mainline")
-           (introduction
-            (make-channel-introduction
-             "8c754e3a4b49af7459a8c99de130fa880e5ca86a"
-             (openpgp-fingerprint
-              "F682 CDCC 39DC 0FEA E116  20B6 C746 CFA9 E74F A4B0"))))
-         (channel
-           (name 'nonguix)
-           (url "https://gitlab.com/nonguix/nonguix")
-           (introduction
-            (make-channel-introduction
-             "897c1a470da759236cc11798f4e0a5f7d4d59fbc"
-             (openpgp-fingerprint
-              "2A39 3FFF 68F4 EF7A 3D29  12AF 6F51 20A0 22FB B2D5"))))
-         (channel
-           (name 'shikanox)
-           (url "https://codeberg.org/ch4og/shikanox.git")
-           (branch "main")
-           (introduction
-            (make-channel-introduction
-             "fe3b5f72aa676c69f4d43507bdd18fb051906917"
-             (openpgp-fingerprint
-              "7C9E 7EBA 828C 58DF DACE  5BED 4DCC 7AB7 FC75 319B"))))
-         (channel
-           (name 'rosenthal)
-           (url "https://codeberg.org/hako/rosenthal.git")
-           (branch "trunk")
-           (introduction
-            (make-channel-introduction
-             "7677db76330121a901604dfbad19077893865f35"
-             (openpgp-fingerprint
-              "13E7 6CD6 E649 C28C 3385  4DF5 5E5A A665 6149 17F7"))))
-         (channel
-           (name 'pantherx)
-           (url "https://codeberg.org/gofranz/panther.git")
-           (introduction
-            (make-channel-introduction
-             "54b4056ac571611892c743b65f4c47dc298c49da"
-             (openpgp-fingerprint
-              "A36A D41E ECC7 A871 1003  5D24 524F EB1A 9D33 C9CB"))))
-         %default-channels))
 
 ;;; ---------------------------------------------------------------------------
 ;;; 密钥与身份凭据
@@ -486,7 +427,7 @@
 
              mingetty-services
 
-             ;; 对基础服务做定制：控制台字体、登录终端、IPv4 转发和频道。
+             ;; 对基础服务做定制：控制台字体、登录终端、IPv4 转发。
              (modify-services %base-services
                (console-font-service-type config =>
                                           (map (lambda (tty)
@@ -501,11 +442,7 @@
                ;; 开启 IPv4 转发，供虚拟机 NAT 使用。
                (sysctl-service-type config =>
                                     (sysctl-configuration (settings (cons '("net.ipv4.ip_forward" . "1")
-                                                                     %default-sysctl-settings))))
-               (guix-service-type config =>
-                                  (guix-configuration (inherit config)
-                                                      (channels
-                                                       system-channels))))))
+                                                                     %default-sysctl-settings)))))))
 
     ;; 启动加载与磁盘布局。
     (bootloader (bootloader-configuration

@@ -40,6 +40,7 @@
              (sorubedo packages vnc)
              (sorubedo packages tools)
              (abbe packages rust)
+             (abbe packages ghostty)
              (gnu packages vulkan)
              (gnu packages graphics))
 
@@ -66,9 +67,10 @@
                                 github-cli
                                 lazygit
                                 fastfetch-no-zfs
+                                ;; btop-nvidia
                                 starship
                                 direnv
-                                foot
+                                ghostty
                                 ungoogled-chromium/wayland
                                 niri
                                 xwayland-satellite
