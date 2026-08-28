@@ -27,7 +27,7 @@
       (channel
        (name 'shikanox)
        (url "https://codeberg.org/ch4og/shikanox.git")
-       (commit "78a65cac2462c1901964fb48b427ebb3f5e3012f")
+       (branch "main")
        (introduction
         (make-channel-introduction
          "fe3b5f72aa676c69f4d43507bdd18fb051906917"
@@ -42,15 +42,6 @@
          "7677db76330121a901604dfbad19077893865f35"
          (openpgp-fingerprint
           "13E7 6CD6 E649 C28C 3385  4DF5 5E5A A665 6149 17F7"))))
-      (channel
-       (name 'pantherx)
-       (url "https://codeberg.org/gofranz/panther.git")
-       (branch "master")
-       (introduction
-        (make-channel-introduction
-         "54b4056ac571611892c743b65f4c47dc298c49da"
-         (openpgp-fingerprint
-          "A36A D41E ECC7 A871 1003  5D24 524F EB1A 9D33 C9CB"))))
       (channel
        (name 'guix)
        (url "https://git.guix.gnu.org/guix.git")

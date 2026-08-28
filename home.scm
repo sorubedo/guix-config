@@ -26,6 +26,7 @@
              (gnu packages window-management)
              (gnu packages xdisorg)
              (gnu packages xorg)
+             (gnu packages networking)
              (nongnu packages editors)
              (guix gexp)
              (noctalia)
@@ -110,7 +111,8 @@
                                 fcitx5-rime-with-plugins
                                 fontmanager
                                 wayvnc
-                                steamguard-cli))
+                                steamguard-cli
+                                blueman))
 
                 ;;; 家庭服务
                 ;; 按环境、桌面和终端功能分组。
