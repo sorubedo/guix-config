@@ -15,6 +15,7 @@
              (gnu services virtualization)
              (gnu system accounts)
              (gnu packages admin)
+             (gnu packages android)
              (gnu packages curl)
              (gnu packages fontutils)
              (gnu packages fonts)
@@ -286,7 +287,7 @@
                     (group "users")
                     (home-directory "/home/sorubedo")
                     (supplementary-groups '("wheel" "netdev" "audio" "video"
-                                            "cgroup"))
+                                            "cgroup" "adbusers"))
                     (shell (file-append fish "/bin/fish")))
                   %base-user-accounts))
     (kernel linux)
@@ -299,6 +300,8 @@
     (packages (append (list fish
                             ncurses
                             curl
+                            adb
+                            fastboot
                             brightnessctl
                             ddcutil
                             podman-compose
@@ -353,6 +356,8 @@
               (service x11-socket-directory-service-type)
               (udev-rules-service 'ddcutil ddcutil)
               (udev-rules-service 'steam-devices steam-devices-udev-rules)
+              (udev-rules-service 'android android-udev-rules
+                                  #:groups '("adbusers"))
               (service gnome-keyring-service-type
                        (gnome-keyring-configuration (pam-services '(("greetd" . login)
                                                                     ("passwd" . passwd)))))
