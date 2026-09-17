@@ -27,6 +27,7 @@
              (gnu packages xdisorg)
              (gnu packages xorg)
              (gnu packages networking)
+             (gnu packages node)
              (nongnu packages editors)
              (guix gexp)
              (noctalia)
@@ -38,7 +39,6 @@
              (gnu packages fontutils)
              (gnu packages ibus)
              (sorubedo packages input-methods)
-             (sorubedo packages vnc)
              (sorubedo packages tools)
              (abbe packages rust)
              (abbe packages ghostty)
@@ -110,9 +110,9 @@
                                 fcitx5-qt
                                 fcitx5-rime-with-plugins
                                 fontmanager
-                                wayvnc
                                 steamguard-cli
-                                blueman))
+                                blueman
+                                node))
 
                 ;;; 家庭服务
                 ;; 按环境、桌面和终端功能分组。

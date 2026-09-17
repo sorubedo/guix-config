@@ -444,10 +444,15 @@
                                                  "tty5" "tty6")))
                ;; 保留 login-service-type，供 Noctalia 生成 /etc/pam.d/login。
                (delete mingetty-service-type)
-               ;; 开启 IPv4 转发，供虚拟机 NAT 使用。
+               ;; 开启 IPv4 转发，供虚拟机 NAT 使用；
+               ;; 放大 unix datagram 队列（默认 10），避免 redroid 灌内核日志时
+               ;; /dev/log 被塞满、shepherd 卡在 sendto 上导致全系统 sudo/sshd 假死。
+               ;; 注意本服务早于 system-log 启动，所以重启后 /dev/log 就是新队列。
                (sysctl-service-type config =>
-                                    (sysctl-configuration (settings (cons '("net.ipv4.ip_forward" . "1")
-                                                                     %default-sysctl-settings)))))))
+                                    (sysctl-configuration
+                                     (settings (cons* '("net.ipv4.ip_forward" . "1")
+                                                      '("net.unix.max_dgram_qlen" . "1024")
+                                                      %default-sysctl-settings)))))))
 
     ;; 启动加载与磁盘布局。
     (bootloader (bootloader-configuration

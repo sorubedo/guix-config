@@ -50,4 +50,14 @@
         (make-channel-introduction
          "9edb3f66fd807b096b48283debdcddccfea34bad"
          (openpgp-fingerprint
-          "BBB0 2DDF 2CEA F6A8 0D1D  E643 A2A0 6DF2 A33A 54FA")))))
+          "BBB0 2DDF 2CEA F6A8 0D1D  E643 A2A0 6DF2 A33A 54FA"))))
+      (channel
+        (name 'small-guix)
+        (url "https://codeberg.org/fishinthecalculator/small-guix.git")
+        (branch "main")
+        ;; Enable signature verification:
+        (introduction
+         (make-channel-introduction
+          "f260da13666cd41ae3202270784e61e062a3999c"
+          (openpgp-fingerprint
+           "8D10 60B9 6BB8 292E 829B  7249 AED4 1CC1 93B7 01E2")))))
