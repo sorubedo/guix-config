@@ -28,6 +28,7 @@
              (gnu packages xorg)
              (gnu packages networking)
              (gnu packages node)
+             (gnu packages linux)
              (nongnu packages editors)
              (guix gexp)
              (noctalia)
@@ -43,7 +44,11 @@
              (abbe packages rust)
              (abbe packages ghostty)
              (gnu packages vulkan)
-             (gnu packages graphics))
+             (gnu packages graphics)
+             (px packages wm)
+             (small-guix packages scrcpy)
+             (gnu packages kde-internet)
+             (gnu packages kde-utils))
 
 ;;; ---------------------------------------------------------------------------
 ;;; 输入法软件包变体
@@ -112,7 +117,11 @@
                                 fontmanager
                                 steamguard-cli
                                 blueman
-                                node))
+                                node
+                                scrcpy
+                                kdeconnect
+                                sshfs
+                                kdialog))
 
                 ;;; 家庭服务
                 ;; 按环境、桌面和终端功能分组。

@@ -22,6 +22,7 @@
              (gnu packages games)
              (gnu packages gnome-xyz)
              (gnu packages hardware)
+             (gnu packages libusb)
              (gnu packages linux)
              (gnu packages ncurses)
              (gnu packages containers)
@@ -358,6 +359,9 @@
               (udev-rules-service 'steam-devices steam-devices-udev-rules)
               (udev-rules-service 'android android-udev-rules
                                   #:groups '("adbusers"))
+              ;; 让 libmtp 的 mtp-probe 自动探测 vendor-specific 的 MTP 接口，
+              ;; 例如 OrangeFox recovery 里 PID 为 ff68 的 mtp_adb 配置。
+              (udev-rules-service 'libmtp libmtp)
               (service gnome-keyring-service-type
                        (gnome-keyring-configuration (pam-services '(("greetd" . login)
                                                                     ("passwd" . passwd)))))
